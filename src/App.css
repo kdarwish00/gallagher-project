@@ -1,38 +1,188 @@
-.App {
-  text-align: center;
+/* Global */
+* {
+  font-family: var(--font-family);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background: radial-gradient(
+    circle at 3% 25%,
+    rgba(0, 40, 83, 1) 0%,
+    rgba(4, 12, 24, 1) 25%
+  );
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* Tax Calculator */
+.tax-calc h1 {
+  position: fixed;
+  top: 25%;
+  right: 51%;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.tax-calc__area {
+  height: 500px;
+  width: 800px;
+  position: fixed;
+  top: 20%;
+  right: 30%;
+  border: 1px solid black;
+  z-index: -1;
+  background: radial-gradient(
+    circle at 30% -100%,
+    #042c54 25%,
+    rgba(4, 44, 84, 1) 85%,
+    rgba(27, 120, 222, 1) 100%
+  );
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.tax-calc__submission {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 40%;
+  right: 50%;
+  padding: 20px;
+}
+
+.tax-calc__submission input {
+  padding: 10px;
+  font-size: 30px;
+}
+
+.tax-calc__submission button {
+  margin-top: 20px;
+  font-size: 20px;
+  background-color: #042c54;
+  color: white;
+  cursor: pointer;
+}
+
+.tax-calc__results {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  padding: 20px;
+  height: 70px;
+  width: 100px;
+  color: white;
+}
+
+.tax-calc__results h2 {
+  color: orange;
+}
+
+.tax-calc__results__error {
+  color: red;
+  font-weight: bold;
+}
+
+/* Media Queries */
+@media screen and (max-width: 990px) {
+  .tax-calc {
+    position: fixed;
   }
-  to {
-    transform: rotate(360deg);
+
+  .tax-calc__area {
+    width: 600px;
+    right: 20%;
+    position: fixed;
+  }
+
+  .tax-calc h1 {
+    right: 30%;
+  }
+
+  .tax-calc__submission {
+    right: 30%;
+  }
+
+  .tax-calc__submission input {
+    padding: 5px;
+    font-size: 30px;
+  }
+
+  .tax-calc__results {
+    left: 30%;
+    top: 60%;
+    flex-direction: row;
+    padding: 10px;
+    position: fixed;
+  }
+
+  .tax-calc__results__tax-due {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .tax-calc {
+    position: fixed;
+  }
+  .tax-calc__area {
+    width: 400px;
+    right: 10%;
+    position: fixed;
+  }
+  .tax-calc h1 {
+    font-size: 24px;
+    right: 20%;
+  }
+  .tax-calc__submission {
+    right: 20%;
+  }
+  .tax-calc__submission input {
+    padding: 5px;
+    font-size: 20px;
+    display: flex;
+  }
+  .tax-calc__results {
+    left: 30%;
+    top: 60%;
+    flex-direction: row;
+    padding: 5px;
+    position: fixed;
+  }
+  .tax-calc__results__tax-due {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .tax-calc {
+    position: fixed;
+  }
+  .tax-calc__area {
+    width: 300px;
+    position: fixed;
+  }
+  .tax-calc h1 {
+    font-size: 20px;
+    right: 15%;
+  }
+  .tax-calc__submission {
+    right: 15%;
+  }
+  .tax-calc__submission input {
+    padding: 5px;
+    font-size: 16px;
+    display: flex;
+  }
+  .tax-calc__results {
+    left: 35%;
+    top: 60%;
+    flex-direction: row;
+    position: fixed;
+    padding: 5px;
+    height: 50px;
+    width: 80px;
+    font-size: 12px;
+  }
+  .tax-calc__results__tax-due {
+    margin-left: 5px;
+    margin-right: 5px;
   }
 }
