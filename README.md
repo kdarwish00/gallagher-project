@@ -28,7 +28,7 @@ To use this calculator, follow these steps:
 
 ## How the application works
 
-The application uses the useState() and useRef() hooks to manage state and get input from the user, respectively. The lowerThresholdTaxNi() function calculates the tax and national insurance due for incomes between £15,000 and £50,000. The calculateIncome() function calls this function and calculates the tax and national insurance due for incomes above £50,000. The application then displays the calculated results. If the user enters an invalid input or an income less than or equal to £15,000, the application will display an error message.
+The application uses the `useState()` and `useRef()` hooks to manage state and get input from the user, respectively. The `lowerThresholdTaxNi()` function calculates the tax and national insurance due for incomes between £15,000 and £50,000. The `calculateIncome()` function calls this function and calculates the tax and national insurance due for incomes above £50,000. The application then displays the calculated results. If the user enters an invalid input or an income less than or equal to £15,000, the application will display an error message.
 
 
 
