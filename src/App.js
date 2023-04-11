@@ -1,30 +1,24 @@
 import { useRef, useState } from "react";
 import "./App.css";
+import { lowerThresholdTaxNi } from "./helpers/taxHelpers";
+import { HIGHER_TAX, HIGHER_NI_TAX } from "./helpers/constants/taxConstants";
 
 function App() {
   const [income, setIncome] = useState(null);
   const incomeInputRef = useRef();
 
-  const lowerThresholdTaxNi = (lowerThresholdIncome) => {
-    const taxAbleAmount = lowerThresholdIncome - 15000;
-    const taxDue = taxAbleAmount * 0.2;
-    const niDue = taxAbleAmount * 0.12;
-    const netPay = lowerThresholdIncome - taxDue - niDue;
-    return { netPay, taxAbleAmount, taxDue, niDue };
-  };
   const calculateIncome = () => {
     const parsedNumber = parseInt(incomeInputRef.current.value, 10);
 
-    console.log({ parsedNumber });
     if (!parsedNumber) {
       return setIncome({
         netPay: "N/A",
         taxDue: "N/A",
         niDue: "N/A",
-        error: "Error",
+        error: "Please enter a valid number",
       });
     }
-    if (parsedNumber <= 15000) {
+    if (parsedNumber <= 15000 && parsedNumber >= 0) {
       return setIncome({
         netPay: "£" + parsedNumber.toFixed(2),
         taxDue: "£" + 0,
@@ -33,7 +27,7 @@ function App() {
       });
     }
 
-    if (parsedNumber > 15000 && parsedNumber < 50000) {
+    if (parsedNumber > 15000 && parsedNumber <= 50000) {
       const { netPay, taxDue, niDue } = lowerThresholdTaxNi(parsedNumber);
       setIncome({
         netPay: "£" + netPay.toFixed(2),
@@ -50,8 +44,8 @@ function App() {
         taxDue: lowerTaxDue,
         niDue: lowerNIDue,
       } = lowerThresholdTaxNi(parsedNumber - higherTaxableIncome);
-      const higherTaxDue = higherTaxableIncome * 0.4;
-      const higherNiDue = higherTaxableIncome * 0.02;
+      const higherTaxDue = higherTaxableIncome * HIGHER_TAX;
+      const higherNiDue = higherTaxableIncome * HIGHER_NI_TAX;
       const netPay =
         lowerNetPay + (higherTaxableIncome - higherTaxDue - higherNiDue);
 
@@ -76,12 +70,12 @@ function App() {
             <>
               <div className="tax-calc__results__net-pay">
                 {" "}
-                <h2>Net Pay</h2> 
+                <h2>Net Pay</h2>
                 <h3>{income.netPay}</h3>{" "}
               </div>
               <div className="tax-calc__results__tax-due">
                 {" "}
-                <h2>Tax Due</h2> 
+                <h2>Tax Due</h2>
                 <h3>{income.taxDue}</h3>{" "}
               </div>
               <div className="tax-calc__results__ni-due">
