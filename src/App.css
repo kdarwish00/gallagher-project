@@ -107,7 +107,7 @@ body {
 
   .tax-calc__results {
     left: 30%;
-    top: 60%;
+    top: 55%;
     flex-direction: row;
     padding: 10px;
     position: fixed;
@@ -146,7 +146,7 @@ body {
   }
   .tax-calc__results {
     left: 30%;
-    top: 60%;
+    top: 55%;
     flex-direction: row;
     padding: 5px;
     position: fixed;
