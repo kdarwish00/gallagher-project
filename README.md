@@ -12,7 +12,7 @@ For the purposes of this task, we have simplified the HMRC rules and allowances.
 
 ## How to run the application
 
-To use this calculator, follow these steps:
+The calculator can be accessed at [https://meek-pixie-c3ffee.netlify.app}. To use this calculator, follow these steps:
 
 1. Clone this repository to your local machine
 2. Navigate to the project directory in your terminal
